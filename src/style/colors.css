@@ -1,0 +1,72 @@
+:root {
+    --burgundy-100: #8a1228;
+    --burgundy-200: #AE1919;
+    --burgundy-300: #863547;
+    --burgundy-400: #AE1919;
+    --burgundy-400: #AE1919;
+    --burgundy-500: #66001a;
+    --burgundy-600: #5a0016;
+    --burgundy-700: #4d0013;
+    --burgundy-800: #400010;
+    --burgundy-900: #33000d;
+    
+    --burgundy-faded: #eb7c7c23;
+
+    --border-color: #cccccc;
+    --rating-icons: #ffc400;
+    --footer-line: #181726;
+    --burgundy-white-text: #e4e4e4;
+
+    --black-100: #494c4f;
+    
+    --shadow-color: #e8ecf0;
+
+    --e-global-color-primary: #6EC1E4;
+    --e-global-color-secondary: #54595F;
+    --e-global-color-text: #7e5d5d;
+    --e-global-color-accent: #61CE70;
+    --e-global-color-34b3b30f: #4054B2;
+    --e-global-color-19f78e1f: #23A455;
+    --e-global-color-376dbcff: #000;
+    --e-global-color-2b9948a6: #FFF;
+    --e-global-color-b6ec831: #6E1A2A;
+
+    --grey-100: #e4e4e4;
+    --grey-200: #e8ecf0;
+    --grey-300: #cccccc;
+    --paper-grey-50: #fafafa;
+    --paper-grey-80: #f3f3f4;
+    --paper-grey-100: #f5f5f5;
+    --paper-grey-200: #eeeeee;
+    --paper-grey-300: #e0e0e0;
+    --paper-grey-400: #bdbdbd;
+    --paper-grey-500: #a2a2a2;
+    --paper-grey-600: #757575;
+    --paper-grey-700: #616161;
+    --paper-grey-800: #424242;
+    --paper-grey-900: #212121;
+
+    --blue-100: #3079ee;
+    --blue-500: #1d4e9d;
+    --blue-900: #17366a;
+    --paper-light-blue-50: #e1f5fe;
+    --paper-light-blue-100: #b3e5fc;
+    --paper-light-blue-200: #81d4fa;
+    --paper-light-blue-300: #4fc3f7;
+    --paper-light-blue-400: #29b6f6;
+    --paper-light-blue-500: #03a9f4;
+    --paper-light-blue-600: #039be5;
+    --paper-light-blue-700: #0288d1;
+    --paper-light-blue-800: #0277bd;
+    --paper-light-blue-900: #01579b;
+    --paper-light-blue-a100: #80d8ff;
+    --paper-light-blue-a200: #40c4ff;
+    --paper-light-blue-a400: #00b0ff;
+    --paper-light-blue-a700: #0091ea;
+
+    --shadow-100: 0 0 20px -2px rgba(20, 23, 28, 0.09);
+    --shadow-100-deeper: 0 0 20px -2px rgba(20, 23, 28, 0.152);
+    --shadow-200: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    --shadow-blue-100: var(--blue-100) 0px 0px 5px 0px, var(--blue-100) 0px 0px 1px 0px;
+    --shadow-blue-200: 0 0 20px -2px var(--paper-light-blue-900);
+}

@@ -1,0 +1,31 @@
+{
+  "name": "bukassa",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\""
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/vue-fontawesome": "^3.0.0-4",
+    "axios": "^0.21.1",
+    "core-js": "^3.6.5",
+    "v-google-translate": "^0.1.10",
+    "vue": "^3.0.0",
+    "vue-material-design-icons": "^4.12.1",
+    "vue-router": "^4.0.0-0",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@jitsi/web-sdk": "^0.2.0",
+    "@videosdk.live/rtc-js-prebuilt": "^0.1.24",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "vue-cli-plugin-i18n": "~2.3.1"
+  }
+}
