@@ -29,17 +29,17 @@ export default createStore({
                 rateFromDollar: payload.rateFromDollar,
                 symbol: payload.value
             };
-            
+
             localStorage.setItem(
-                "currency", 
+                "currency",
                 JSON.stringify(selectedCurrency)
             );
-            
+
             state.prefCurrency = selectedCurrency;
         },
         changePrefLanguage(state, payload){
             var selectedlang = payload.value;
-            
+
             localStorage.setItem('language', selectedlang);
             state.prefLanguage = selectedlang;
         },
@@ -94,14 +94,14 @@ export default createStore({
             state.communityLanguages = payload;
         }
     },
-    actions: { 
+    actions: {
         storerole({commit}, payload){
             return new Promise((resolve)=> {
                 commit('store_user_role', payload);
                 resolve();
             })
         },
-        signin({commit}, payload) {    
+        signin({commit}, payload) {
             return new Promise( async (resolve, reject)=>{
                 await axios.post(`${baseURL}/user/auth`,  payload)
                 .then((response)=> {
@@ -125,7 +125,7 @@ export default createStore({
                 resolve();
             });
         },
-        register({commit}, payload) {    
+        register({commit}, payload) {
             return new Promise( async (resolve, reject)=>{
                 await axios.post(`${baseURL}/user/register`, payload)
                 .then((response)=> {
@@ -150,21 +150,21 @@ export default createStore({
             return new Promise( resolve=> {
                 commit('clear_user');
                 commit('clear_user_role');
-                
+
                 resolve();
             });
         },
         fetchuserdata({commit}) {
             return new Promise(async (resolve, reject)=> {
-                
+
                 const headers = { 'x-access-token':`Bearer ${this.state.token}` }
-                
+
                 await axios.get(
                     `${baseURL}/user/profile/me`,
                     { headers: headers }
                 )
                 .then((response)=> {
-              
+
                     const user = response.data.user;
                     commit('store_user', user);
 
@@ -187,7 +187,7 @@ export default createStore({
                 .then((response)=> {
                     const tutor = response.data.data;
                     commit('store_tutor', tutor);
-                    
+
                     resolve();
                 })
                 .catch((error)=> {
@@ -198,16 +198,16 @@ export default createStore({
         },
         submittutorapplication({commit}, payload) {
             return new Promise(async (resolve, reject)=> {
-                
+
                 const headers = {
                     'Content-Type': 'multipart/form-data',
                     'x-access-token':`Bearer ${this.state.token}`
                 };
-                
-                await axios.post(`${baseURL}/tutors/becometutor`, payload, 
+
+                await axios.post(`${baseURL}/tutors/becometutor`, payload,
                     { headers: headers })
                 .then((response)=> {
-                    
+
                     const tutor = response.data.tutor,
                     user = response.data.user;
 
@@ -242,7 +242,7 @@ export default createStore({
         fetchtutors({commit}) {
             return new Promise(async (resolve, reject)=> {
                 await axios.get(`${baseURL}/tutors/explore`)
-                .then((response)=> {                
+                .then((response)=> {
                     const tutors = response.data.data;
                     commit('store_tutors', tutors);
 
@@ -273,9 +273,9 @@ export default createStore({
         createevent({commit}, payload) {
             return new Promise(async (resolve, reject)=> {
                 const headers= { 'x-access-token':`Bearer ${this.state.token}` };
-                
+
                 await axios.post(
-                    `${baseURL}/tutors/${payload.tutorname}/newevent`, 
+                    `${baseURL}/tutors/${payload.tutorname}/newevent`,
                     { newevent: payload },
                     { headers: headers }
                 ).then((updatedUserInfo)=> {
@@ -309,7 +309,7 @@ export default createStore({
         fetchmessages({commit}, payload) {
             return new Promise(async (resolve, reject) => {
                 const headers = {'x-access-token':`Bearer ${this.state.token}`}
-                
+
                 await axios.get(`${baseURL}/chat/${payload}`,
                     { headers: headers }
                 ).then((response)=> {
@@ -348,7 +348,7 @@ export default createStore({
             return new Promise( async (resolve, reject)=> {
                 const headers = {'x-access-token':`Bearer ${this.state.token}`},
                 endpoint = `${baseURL}/tutors/edit/`;
-                
+
                 await axios.post(endpoint, payload, { headers: headers })
                 .then((response)=> resolve(response.data.user))
                 .catch((error)=> reject(error));
@@ -365,9 +365,9 @@ export default createStore({
         },
         fetchcommunityquestions({commit}) {
             return new Promise(async (resolve, reject)=> {
-             
+
                 const url = `${baseURL}/community/questions/${this.state.communityLanguage}`;
-                
+
                 await axios.get(url)
                 .then((response)=> resolve(response.data.data))
                 .catch((error)=> reject(error));
@@ -375,9 +375,9 @@ export default createStore({
         },
         fetchcommunityquestion({commit}, payload) {
             return new Promise(async (resolve, reject)=> {
-             
+
                 const url = `${baseURL}/community/question/${payload}`;
-                
+
                 await axios.get(url)
                 .then((response)=> resolve(response.data.data))
                 .catch((error)=> reject(error));
@@ -385,11 +385,11 @@ export default createStore({
         },
         createquestion({commit}, payload) {
             return new Promise(async (resolve, reject)=> {
-                
+
                 const headers = {'x-access-token':`Bearer ${this.state.token}`},
                 url = `${baseURL}/community/questions/create`;
-                
-                await axios.post(url, payload, 
+
+                await axios.post(url, payload,
                 { headers: headers })
                 .then((response)=> resolve(response.data.data))
                 .catch((error)=> reject(error));
@@ -453,7 +453,7 @@ export default createStore({
             });
         }
     },
-    getters: { 
+    getters: {
         registrationRole: state => state.role,
         tempRoute: state => state.tempRoute,
         isSignedIn: state => state.isSignedIn,

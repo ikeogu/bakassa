@@ -2,12 +2,12 @@
     <div class="nested_drop_down_frame" @click=toggleNestedOptions>
         <div class="display">
             <div class="lang">
-                {{ allCurrencies[selectedCurrencyIndex].display_name }} 
+                {{ allCurrencies[selectedCurrencyIndex].display_name }}
             </div>
             <font-awesome-icon :icon="['fas', 'caret-down']" class="icon" v-if=isCollapsed[0] />
-            <font-awesome-icon 
-                :icon="['fas', 'caret-up']" 
-                class="icon" 
+            <font-awesome-icon
+                :icon="['fas', 'caret-up']"
+                class="icon"
                 v-if=!isCollapsed[0]
             />
         </div>
@@ -31,58 +31,65 @@
 import { defineComponent } from "@vue/runtime-core";
 import DropDown from "./DropDown.vue";
 import SelectOptions from "./SelectOptions.vue";
-import Translator from "../Translator.vue"; 
+import Translator from "../Translator.vue";
+import axios from "axios";
+var IPGeolocationAPI = require('ip-geolocation-api-javascript-sdk');
+var ipgeolocationApi = new IPGeolocationAPI("17de5a0f1a0f494e977e73309eaf9461", false);
+
 
 export default defineComponent({
     name: 'header-nested-drop-down',
     components: { DropDown, SelectOptions, Translator },
     data() {
-        const allLanguages = [
-            {
-                display_name: "English",
-                value: "english",
-            },
-            {
-                display_name: "French",
-                value: "french"
-            },
-            {
-                display_name: "Yoruba",
-                value: "yoruba"
-            }
-        ], 
-        allCurrencies = [
-            {   
-                currency_name: 'Great Britain Pound',
-                display_name: "GBP £",
-                value: "£",
-                rateFromDollar: 0.73
-            },
-            {   
-                currency_name: 'Nigerian Naira',
-                display_name: "NGN ₦",
-                value: "₦",
-                rateFromDollar: 470.00
-            },
-            {
-                currency_name: 'United States Dollar',
-                display_name: "USD $",
-                value: "$",
-                rateFromDollar: 1
-            }
-        ];
+        return{
+            myLocation :{
+                    currencyName :'',
+                    abbr :'',
+                    symbol : '',
+                    rateFromDollar :''
 
-        var selectedLangIndex = 0,
-        selectedCurrencyIndex = 0;
+                },
+            allCurrencies:[
+                    {
+                        currency_name: 'Great Britain Pound',
+                        display_name: "GBP £",
+                        value: "£",
+                        rateFromDollar: 0.73
+                    },
+                    {
+                        currency_name: 'Nigerian Naira',
+                        display_name: "NGN ₦",
+                        value: "₦",
+                        rateFromDollar: 470.00
+                    },
+                    {
+                        currency_name: 'United States Dollar',
+                        display_name: "USD $",
+                        value: "$",
+                        rateFromDollar: 1
+                    }
+                ],
+                allLanguages :[
+                    {
+                        display_name: "English",
+                        value: "english",
+                    },
+                    {
+                        display_name: "French",
+                        value: "french"
+                    },
+                    {
+                        display_name: "Yoruba",
+                        value: "yoruba"
+                    }
+                ],
+                 isCollapsed: [true, true, true],
 
+            selectedLangIndex:'',
 
-        return { 
-            isCollapsed: [true, true, true],
-            allLanguages,
-            allCurrencies,
-            selectedLangIndex,
-            selectedCurrencyIndex,
+             selectedCurrencyIndex :0,
         }
+
     },
     methods: {
         showNestedOptions() {
@@ -123,41 +130,48 @@ export default defineComponent({
             this.$store.commit('changePrefCurrency', this.allCurrencies[index]);
         },
 
-        getSelectedIndex() { 
-            for (let index = 0; index < this.allCurrencies.length; index++) { 
-                const element = this.allCurrencies[index]; 
+        getSelectedIndex() {
+            for (let index = 0; index < this.allCurrencies.length; index++) {
+                const element = this.allCurrencies[index];
 
-                if (element.value == this.$store.state.prefCurrency.symbol) 
+                if (element.value == this.$store.state.prefCurrency.symbol)
                     this.selectedCurrencyIndex = index;
             }
 
-            for (let index = 0; index < this.allLanguages.length; index++) { 
-                const element = this.allLanguages[index]; 
-                
+            for (let index = 0; index < this.allLanguages.length; index++) {
+                const element = this.allLanguages[index];
+
                 if (element.value == this.$store.state.prefLanguage)
                     this.selectedLangIndex = index;
             }
         },
+         handleResponse(json) {
+            
+             this.myLocation.currencyName = json.currency.name;
+             this.myLocation.abbr = json.currency.code;
+             this.myLocation.symbol =json.currency.symbol
+        }
     },
     beforeMount() {
+        ipgeolocationApi.getGeolocation(this.handleResponse);
 
         if(localStorage.getItem("currency") == null ) {
+
             localStorage.setItem(
-                "currency", 
+                "currency",
                 JSON.stringify({
-                    currencyName: 'Great Britain Pound',
-                    abbr: 'GBP',
-                    symbol: '£',
+                    currencyName: this.myLocation.currencyName,
+                    abbr: this.myLocation.abbr,
+                    symbol: this.myLocation.symbol,
                     rateFromDollar: 0.73
                 })
             );
 
             this.$store.commit('changePrefCurrency', this.allCurrencies[0]);
         }
-       
         if(localStorage.getItem("language") == null ) {
             localStorage.setItem(
-                "language", 
+                "language",
                 JSON.stringify({
                     display_name: "English",
                     value: "english",
@@ -166,10 +180,10 @@ export default defineComponent({
 
             this.$store.commit('changePrefLanguage', this.allLanguages[0]);
         }
-        
+
         this.getSelectedIndex();
     },
-    
+
 });
 </script>
 
@@ -179,7 +193,7 @@ export default defineComponent({
         height: 100% !important;
         position: relative !important;
     }
-    
+
 
     .display {
         display: flex;

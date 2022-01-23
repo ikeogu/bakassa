@@ -13,17 +13,17 @@
                 <div class="form">
 
                     <div class="error-msg" v-if="formModel.error != ''">{{ formModel.error }}</div>
-                    
+
                     <form @submit.prevent="signInButtonPressed">
 
-                        <input 
+                        <input
                             :class="{
                                 error: (emailModel.error != '') ?true :false
                             }"
-                            v-model="emailModel.value" 
-                            @keyup="validateEmail()" 
-                            :type="emailModel.type" 
-                            class="email" placeholder="Email" 
+                            v-model="emailModel.value"
+                            @keyup="validateEmail()"
+                            :type="emailModel.type"
+                            class="email" placeholder="Email"
                             autocomplete="off"
                         >
                         <div class="error-message" v-if="emailModel.error != ''">{{ emailModel.error }}</div>
@@ -32,10 +32,10 @@
                             :class="{
                                 error: (passwordModel.error != '') ?true :false
                             }"
-                            v-model="passwordModel.value" 
-                            @keyup="validatePassword()" 
-                            :type="passwordModel.type" 
-                            placeholder="Password" 
+                            v-model="passwordModel.value"
+                            @keyup="validatePassword()"
+                            :type="passwordModel.type"
+                            placeholder="Password"
                             autocomplete="off"
                         >
                         <div class="error-message" v-if="passwordModel.error != ''">{{ passwordModel.error }}</div>
@@ -43,18 +43,18 @@
                         <div class="link">
                             <router-link to="/"> Forgot your password? </router-link>
                         </div>
-                        
+
                         <div class="signin_btn_wrapper">
-                            <ButtonPlainText 
-                                buttonText='SIGN IN' 
-                                :isLoading="isLoading" 
-                                @button-action="signUserIn" 
+                            <ButtonPlainText
+                                buttonText='SIGN IN'
+                                :isLoading="isLoading"
+                                @button-action="signUserIn"
                             />
                         </div>
 
                     </form>
                     <div class="orsignup">
-                        Don't have an account? 
+                        Don't have an account?
                         <router-link to="/register"> Create account </router-link>
                     </div>
                 </div>
@@ -66,7 +66,7 @@
 <script>
     import Header from '../components/Header/Header.vue';
     import ButtonPlainText from '@/components/buttons/ButtonPlainText.vue';
-    
+
     export default {
         components: { Header, ButtonPlainText },
         data() {
@@ -85,10 +85,10 @@
                 },
                 isDisabled = true;
 
-            return { 
+            return {
                 emailModel,
-                passwordModel, 
-                formModel, 
+                passwordModel,
+                formModel,
                 isDisabled,
                 isLoading: false
             }
@@ -96,9 +96,9 @@
         methods: {
             async signUserIn() {
                 if (this.validateInput()) {
-                    
+
                     this.isLoading = true;
-                    
+
                     var body = {
                         email: this.emailModel.value,
                         password: this.passwordModel.value
@@ -106,9 +106,16 @@
 
                     await this.$store.dispatch("signin", body)
                     .then(()=> {
-                        if(this.$store.getters.tempRoute)
-                            this.$router.push(`/${this.$store.getters.tempRoute}`)
-                        else this.$router.push('/profile')
+
+                        if(this.$store.getters.tempRoute){
+
+                             this.$router.push(`/${this.$store.getters.tempRoute}`)
+                        }
+
+                        else {
+                            
+                            this.$router.push('/profile')
+                            }
                     })
                     .catch(error => {
 
@@ -120,7 +127,7 @@
                         else
                             this.formModel.error = "A server error occurred, please try logging in again";
                     });
-           
+
                 }
             },
             validateInput() {
@@ -170,13 +177,13 @@
     .header_wrapper header:deep #google_translate_element .goog-te-combo option {
         color: black !important;
     }
-    
+
     section.body {
         display: flex;
         padding: 0;
         height: 100vh;
     }
-    
+
     div.image_wrapper {
         width: 100%;
         height: 100%;
@@ -260,7 +267,7 @@
         margin: 2% 0%;
         color: white;
         font-size: 90%;
-        font-weight: 500; 
+        font-weight: 500;
     }
     div.orsignup {
         width: 90%;
@@ -289,9 +296,9 @@
 
     @media screen and (max-width: 1280px) {
         .header_wrapper {
-            
+
         }
-    } 
+    }
 
     @media screen and (max-width: 1200px) {
         div.form-box-frame {

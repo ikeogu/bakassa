@@ -86,56 +86,23 @@
 </template>
 
 <script>
+
 import HeaderNestedDropDown from '@/components/DropDown/HeaderNestedDropDown.vue';
 import UserProfileMenu from '@/components/userprofile/UserProfileMenu.vue';
 import Translator from "../Translator.vue";
+import axios from "axios";
+var IPGeolocationAPI = require('ip-geolocation-api-javascript-sdk');
+var ipgeolocationApi = new IPGeolocationAPI("17de5a0f1a0f494e977e73309eaf9461", false);
+
+var isLoggedIn, showUserMenu = false;
+
 
 export default {
     name: 'Header',
     components: { HeaderNestedDropDown, UserProfileMenu, Translator },
     data() {
-
-        var isLoggedIn, showUserMenu = false;
-         defaultLanguageCode: "en";
-
-        if(localStorage.getItem("access-token")) isLoggedIn = true;
+         if(localStorage.getItem("access-token")) isLoggedIn = true;
         else isLoggedIn = false;
-
-        const allCurrencies = [
-            {
-                currency_name: 'Great Britain Pound',
-                display_name: "GBP £",
-                value: "£",
-                rateFromDollar: 0.73
-            },
-            {
-                currency_name: 'Nigerian Naira',
-                display_name: "NGN ₦",
-                value: "₦",
-                rateFromDollar: 470.00
-            },
-            {
-                currency_name: 'United States Dollar',
-                display_name: "USD $",
-                value: "$",
-                rateFromDollar: 1
-            }
-        ],
-
-        allLanguages = [
-            {
-                display_name: "English",
-                value: "english",
-            },
-            {
-                display_name: "French",
-                value: "french"
-            },
-            {
-                display_name: "Yoruba",
-                value: "yoruba"
-            }
-        ];
 
         let isOptionsVisible = [false, false], selected = [true, true];
 
@@ -143,32 +110,80 @@ export default {
 
         const userRole = this.$store.getters.userData.role;
 
-        return {
-            fullname: this.$store.getters.userData.fullname,
-            userRole,
-            allCurrencies,
-            allLanguages,
-            isOptionsVisible,
-            selectedCurrencyIndex,
-            selectedLanguageIndex,
-            selected,
-            showUserMenu,
-            isLoggedIn,
-            nav: [
-                {
-                    label: 'Profile',
-                    path: '/profile',
-                    icon: ''
+       return {
+                defaultLanguageCode: "en",
+                myLocation :{
+                    currencyName :'',
+                    abbr :'',
+                    symbol : '',
+                    rateFromDollar :''
+
                 },
-                {
-                    label: 'logout',
-                    path: '/logout',
-                    icon: ''
-                }
-            ],
-            showSideBar: false,
+
+                fullname: this.$store.getters.userData.fullname ,
+                userRole,
+                allCurrencies:[
+
+                    {
+                        currency_name: 'Great Britain Pound',
+                        display_name: "GBP £",
+                        value: "£",
+                        rateFromDollar: 0.73
+                    },
+                    {
+                        currency_name: 'Nigerian Naira',
+                        display_name: "NGN ₦",
+                        value: "₦",
+                        rateFromDollar: 470.00
+                    },
+                    {
+                        currency_name: 'United States Dollar',
+                        display_name: "USD $",
+                        value: "$",
+                        rateFromDollar: 1
+                    }
+                ],
+
+                isOptionsVisible,
+                selectedCurrencyIndex,
+                selectedLanguageIndex,
+                selected,
+                showUserMenu,
+                isLoggedIn,
+                nav: [
+                    {
+                        label: 'Profile',
+                        path: '/profile',
+                        icon: ''
+                    },
+                    {
+                        label: 'logout',
+                        path: '/logout',
+                        icon: ''
+                    }
+                ],
+                showSideBar: false,
+                allLanguages :[
+                    {
+                        display_name: "English",
+                        value: "english",
+                    },
+                    {
+                        display_name: "French",
+                        value: "french"
+                    },
+                    {
+                        display_name: "Yoruba",
+                        value: "yoruba"
+                    }
+                ]
+
         }
+
+
+
     },
+
     methods: {
         getSelectedIndex() {
             for (let index = 0; index < this.allCurrencies.length; index++) {
@@ -211,21 +226,29 @@ export default {
         toggleSideBar() {
             this.showSideBar = !this.showSideBar;
         },
-        
+         handleResponse(json) {
+
+             this.myLocation.currencyName = json.currency.name;
+             this.myLocation.abbr = json.currency.code;
+             this.myLocation.symbol =json.currency.symbol
+        }
+
     },
     beforeMount() {
 
+
         if(localStorage.getItem("currency") == null ) {
+
             localStorage.setItem(
                 "currency",
                 JSON.stringify({
-                    currencyName: 'Great Britain Pound',
-                    abbr: 'GBP',
-                    symbol: '£',
+                    currencyName: this.myLocation.currencyName,
+                    abbr: this.myLocation.abbr,
+                    symbol: this.myLocation.symbol,
                     rateFromDollar: 0.73
                 })
             );
-
+            console.log(localStorage.getItem("currency"));
             this.$store.commit('changePrefCurrency', this.allCurrencies[0]);
         }
 
@@ -242,7 +265,15 @@ export default {
         }
 
         this.getSelectedIndex();
-    }
+    },
+
+mounted() {
+    ipgeolocationApi.getGeolocation(this.handleResponse);
+    
+
+
+
+},
 }
 </script>
 

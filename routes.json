@@ -1,0 +1,9 @@
+{
+
+"/user/register": "/register",
+
+"/user/auth": "/auth",
+"/user/profile/me:userId": "/me:userId"
+
+
+}

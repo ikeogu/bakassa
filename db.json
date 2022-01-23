@@ -1,0 +1,179 @@
+{
+  "register": [
+    {
+      "id": 0,
+      "dob": "",
+      "email": "",
+      "fullname": "",
+      "password": "",
+      "role": ""
+    },
+    {
+      "fullname": "Goodness Chienhiura",
+      "email": "goody@gmail.com",
+      "password": "00000000",
+      "dob": "1996-11-30",
+      "role": "",
+      "id": 1
+    },
+    {
+      "fullname": "Goodness Chienhiura",
+      "email": "goody@gmail.com",
+      "password": "00000000",
+      "dob": "1997-11-30",
+      "role": "student",
+      "id": 2
+    },
+    {
+      "fullname": "Emmanuel Ikeogu",
+      "email": "red@gmail.cm",
+      "password": "88888888",
+      "dob": "1990-11-01",
+      "role": "student",
+      "id": 3
+    },
+    {
+      "fullname": "Ikeogu Chidera",
+      "email": "ikeogu322@gmail.com",
+      "password": "pppppppp",
+      "dob": "1962-09-18",
+      "role": "tutor",
+      "id": 4
+    },
+    {
+      "fullname": "dadd  dad",
+      "email": "dad@gmail.com",
+      "password": "00000000",
+      "dob": "1985-11-30",
+      "role": "student",
+      "id": 5
+    }
+  ],
+  "tutors": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": [
+    {
+      "fullname": "Goodness Chienhiura",
+      "email": "goody@gmail.com",
+      "password": "00000000",
+      "dob": "1997-11-30",
+      "role": "student",
+      "id": 2
+    }
+  ],
+  "auth": [
+    {
+      "fullname": "Goodness Chienhiura",
+      "email": "goody@gmail.com",
+      "password": "00000000",
+      "dob": "1997-11-30",
+      "role": "student",
+      "id": 2
+    },
+    {
+      "email": "goody@gmail.com",
+      "password": "00000000",
+      "id": 3
+    },
+    {
+      "email": "red@gmail.com",
+      "password": "88888888",
+      "id": 4
+    },
+    {
+      "email": "red@gmail.com",
+      "password": "88888888",
+      "id": 5
+    },
+    {
+      "email": "red@gmail.com",
+      "password": "88888888",
+      "id": 6
+    },
+    {
+      "email": "red@gmail.com",
+      "password": "88888888",
+      "id": 7
+    },
+    {
+      "email": "red@gmail.com",
+      "password": "88888888",
+      "id": 8
+    },
+    {
+      "email": "red@gmail.com",
+      "password": "88888888",
+      "id": 9
+    },
+    {
+      "email": "red@gmail.com",
+      "password": "88888888",
+      "id": 10
+    },
+    {
+      "email": "goody@gmail.com",
+      "password": "88888888",
+      "id": 11
+    },
+    {
+      "email": "goody@gmail.com",
+      "password": "88888888",
+      "id": 12
+    },
+    {
+      "email": "goody@gmail.com",
+      "password": "88888888",
+      "id": 13
+    },
+    {
+      "email": "goody@gmail.com",
+      "password": "88888888",
+      "id": 14
+    },
+    {
+      "email": "goody@gmail.com",
+      "password": "88888888",
+      "id": 15
+    },
+    {
+      "email": "goody@gmail.com",
+      "password": "88888888",
+      "id": 16
+    },
+    {
+      "email": "goody@gmail.com",
+      "password": "88888888",
+      "id": 17
+    },
+    {
+      "email": "goody@gmail.com",
+      "password": "88888888",
+      "id": 18
+    },
+    {
+      "email": "dad@gmail.com",
+      "password": "00000000",
+      "id": 19
+    },
+    {
+      "email": "dad@gmail.com",
+      "password": "88888888",
+      "id": 20
+    }
+  ],
+  "me": [
+    {
+      "fullname": "Goodness Chienhiura",
+      "email": "goody@gmail.com",
+      "password": "00000000",
+      "dob": "1997-11-30",
+      "role": "student",
+      "id": 1
+    }
+  ]
+}

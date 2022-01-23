@@ -16,7 +16,7 @@ export default defineComponent({
         }
     },
     mounted() {
-      // new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
     }
 });
 </script>
