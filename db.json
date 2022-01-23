@@ -47,13 +47,43 @@
       "dob": "1985-11-30",
       "role": "student",
       "id": 5
+    },
+    {
+      "fullname": "Eki Dan",
+      "email": "eki@gmail.com",
+      "password": "11111111",
+      "dob": "1988-11-30",
+      "role": "tutor",
+      "id": 6
     }
+
   ],
   "tutors": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+
+      "fullname": "Eki Dan",
+      "email": "eki@gmail.com",
+      "password": "11111111",
+      "dob": "1988-11-30",
+      "role": "tutor",
+      "id": 1
+
+    },
+    {
+      "fullname": "Micheal",
+      "email": "m@gmail.com",
+      "password": "11111111",
+      "dob": "1988-11-30",
+      "role": "tutor",
+      "id": 2
+    },
+    {
+      "fullname": "Caliabr",
+      "email": "c@gmail.com",
+      "password": "11111111",
+      "dob": "1988-11-30",
+      "role": "tutor",
+      "id": 3
     }
   ],
   "profile": [

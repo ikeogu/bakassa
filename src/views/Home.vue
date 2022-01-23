@@ -15,16 +15,16 @@
             <div class="title_detail">
               We don’t just teach African languages to your kid, we also bring awareness of various African cultures, reintroduce them to their roots and Identity by teaching them their native language.
             </div>
-            
+
             <form class="search">
               <input placeholder="Search A Language">
-              
+
               <div class="btn_wrapper">
-                <ButtonPlainText 
-                  buttonText="Find A Tutor" 
+                <ButtonPlainText
+                  buttonText="Find A Tutor"
                 />
-              </div> 
-            
+              </div>
+
             </form>
           </div>
         </div>
@@ -139,10 +139,10 @@
             <div class="slide">
               <div class="ball"></div>
               <div class="quote">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Nunc sit amet volutpat orci. Nulla sed turpis in est aliquam maximus nec non nisl. 
-                Etiam tortor mauris, gravida sed porta tempus, pretium sed elit. 
-                Mauris vestibulum congue sem non aliquet. Nunc semper felis nec nisi mattis, ac finibus orci interdum. 
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Nunc sit amet volutpat orci. Nulla sed turpis in est aliquam maximus nec non nisl.
+                Etiam tortor mauris, gravida sed porta tempus, pretium sed elit.
+                Mauris vestibulum congue sem non aliquet. Nunc semper felis nec nisi mattis, ac finibus orci interdum.
                 Aliquam elementum imperdiet ipsum et bibendum. Ut vitae porttitor velit. Suspendisse ornare feugiat tortor quis porttitor. Aliquam eu hendrerit enim.
               </div>
               <div class="profile">
@@ -156,7 +156,7 @@
               </div>
             </div>
           </div>
-          
+
           <div class="join">
             <div class="">Not a member yet?</div>
             <div class="register_prompt">Register now</div>
@@ -202,7 +202,7 @@
           <ButtonPlainText buttonText="Find A Tutor" />
         </div>
       </div>
-    
+
     </section>
     <SiteFooter />
   </div>
@@ -399,7 +399,7 @@
   .profile {
     display: flex;
     width: 80%;
-    margin: 0 auto; 
+    margin: 0 auto;
     padding: 5% 0;
   }
   .user {
@@ -417,13 +417,13 @@
   .records .details .title {
     font-size: 100%;
     color: var(--black-100);
-    font-weight: 300; 
+    font-weight: 300;
   }
   .testimonies .join {
     display: flex;
     color: grey;
   }
-  
+
   .metrics {
     height: 100%;
     width: 45%;
@@ -432,7 +432,7 @@
     justify-content: space-between;
   }
   .metrics > div {
-    width: calc(100% / 2.1); 
+    width: calc(100% / 2.1);
     height: 300px;
     background: #eee8e2;
     border-radius: 5px;
@@ -537,7 +537,45 @@
     border-radius: 5px;
   }
 
-  @media screen and (max-width: 300px) {
-    
+  @media(max-width: 768px) {
+     .hero .image_wrapper {
+        width: 100% !important;
+        position:absolute;
+        margin-top:380px;
+
+    }
+    .hero img{
+      width: 490px !important;
+    }
+    .hero .message {
+        width: 100%;
+        margin: auto 0;
+    }
+    .hero .message .main_title {
+        font-weight: 700;
+        font-size: 190%;
+        color: #221638;
+    }
+    .hero .message .title_detail {
+        line-height: 150%;
+        margin: 5% 0;
+    }
+    .hero_wrapper {
+        height: 80%;
+        width: 90%;
+        margin: auto;
+        display: block;
+        align-items: center;
+        justify-content: space-evenly;
+
+
+    }
+  }
+   @media(max-width: 537px) {
+
+    .hero img{
+      width: 340px !important;
+    }
+
   }
 </style>

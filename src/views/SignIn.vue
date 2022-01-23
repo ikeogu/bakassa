@@ -113,7 +113,7 @@
                         }
 
                         else {
-                            
+
                             this.$router.push('/profile')
                             }
                     })
@@ -294,11 +294,7 @@
         color: white;
     }
 
-    @media screen and (max-width: 1280px) {
-        .header_wrapper {
-
-        }
-    }
+  
 
     @media screen and (max-width: 1200px) {
         div.form-box-frame {

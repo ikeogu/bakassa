@@ -3,7 +3,9 @@
 "/user/register": "/register",
 
 "/user/auth": "/auth",
-"/user/profile/me:userId": "/me:userId"
+"/user/profile/me:userId": "/me:userId",
+"/tutors/explore":"/tutors",
+"/tutors/explore:id":"/tutors:id"
 
 
 }

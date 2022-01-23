@@ -269,7 +269,7 @@ export default {
 
 mounted() {
     ipgeolocationApi.getGeolocation(this.handleResponse);
-    
+
 
 
 
@@ -378,13 +378,13 @@ mounted() {
         display: none;
     }
 
-    @media screen and (max-width: 1280px) {
+    @media screen and (max-width: 1200px) {
         div.drop_down_section {
             width: 12%;
         }
     }
 
-    @media screen and (max-width: 1100px) {
+    @media screen and (max-width: 1200px) {
         div.logo {
             font-size: 150%;
         }
@@ -409,7 +409,7 @@ mounted() {
         }
     }
 
-    @media screen and (max-width: 750px) {
+    @media screen and (max-width: 768px) {
         .menu_bar {
             display: block;
             font-size: 140%;
@@ -491,7 +491,7 @@ mounted() {
 
     }
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 578px) {
         .mobile_nav_container .mobile_nav_wrapper {
             width: 60%;
         }
